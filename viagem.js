@@ -4,42 +4,41 @@ console.log('Bem-vindo à Viagem S.A \n')
 const idadeComprador = 18
 const acompanhante = true
 const destino = 'Brasília'
-let pacoteComprado = listaDePacotes.splice(1, 1)
-let passagemComprada = false
+let pacoteComprado = false
 
 // Criando e imprimindo a lista de pacotes disponíveis
 const listaDePacotes = new Array('Brasília', 'São Paulo', 'Rio de Janeiro')
-console.log(`Os pacotes dispoíveis são \n ${listaDePacotes}`)
+console.log(`Os pacotes dispoíveis são: \n ${listaDePacotes} \n`)
 
-// Iniciando a função para verficar a existência do destino do passageiro
+// Função para verficar a existência do destino do passageiro
 function verificarDestino() {
   // Inicializando variáveis
-  let contador = 0
+  let i = 0
   let destinoExiste = false
 
   // Começando o laço
-  while (contador <= listaDePacotes.length) {
-    if (listaDePacotes[contador] == destino) {
+  while (i <= listaDePacotes.length) {
+    if (listaDePacotes[i] == destino) {
       destinoExiste = true
       break
     }
-    contador++
+    i++
   }
 }
-console.log(verificarDestino())
 
 // Realizando a verificação se o comprador tem mais de 18 anos ou está acompanhado
-if (idadeComprador >= 18 || acompanhante == true) {
-  console.log('Pacote comprado')
-  console.log(`Boa viagem para ${pacoteComprado} \n`)
+if (idadeComprador >= 18 || (acompanhante == true && destinoExiste != false)) {
+  pacoteComprado = true
+  console.log('Pacote comprado com sucesso!')
+  console.log(`Boa viagem para ${destino} \n`)
 } else {
-  console.log('Você precisa ter mais de 18 anos para comprar um pacote \n')
+  console.log('Desculpe... Houve um erro \n')
 }
 
-// Verificação de embarque, só poderá embarcar com mais de 18 anos ou se tiver passagem
-console.log('Embarque: \n')
-if (idadeComprador >= 18 && passagemComprada) {
+// Embarque, só poderá embarcar com mais de 18 anos ou se tiver passagem
+console.log('Situação de Embarque: \n')
+if (idadeComprador >= 18 && pacoteComprado) {
   console.log('Boa viagem!')
 } else {
-  console.log('VocÊ não pode embarcar...')
+  console.log('Você não pode embarcar...')
 }
